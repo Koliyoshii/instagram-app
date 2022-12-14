@@ -45,7 +45,7 @@ function Header() {
             <HomeIcon onClick={() => router.push('/')} className="header-icons" />
             <Bars3BottomRightIcon className=" h-5 w-5 cursor-pointer md:hidden inline-flex hover:scale-125 transition-all duration-150 ease-out" />
 
-            {!session ? (
+            {session ? (
               <>
                 <div className="relative header-button">
                   <PaperAirplaneIcon className="header-icons -rotate-45" />
