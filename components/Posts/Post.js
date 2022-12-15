@@ -27,7 +27,7 @@ import Moment from "react-moment";
 
 function Post({ id, username, userImg, img, caption }) {
   const { data: session } = useSession();
-  const [comment, setComment] = useState([]);
+  const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
   const [hasLiked, setHasLiked] = useState([]);
@@ -159,7 +159,7 @@ function Post({ id, username, userImg, img, caption }) {
           />
           <button
             type="submit"
-            
+            disabled={!comment.trim()}
             onClick={sendComment}
             className="font-smibold text-blue-400"
           >
