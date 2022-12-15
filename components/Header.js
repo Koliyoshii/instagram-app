@@ -58,14 +58,14 @@ function Header() {
                 <UserGroupIcon className="header-icons" />
                 <HeartIcon className="header-icons" />
                 <img
-                  onClick={signOut}
+                  onClick={signOut()}
                   src={session?.user?.image}
                   alt="profile-picture"
                   className="h-10 rounded-full w-10 cursor-pointer"
                 />
               </>
             ) : (
-              <button onClick={signIn}>Sign In</button>
+              <button onClick={signIn()}>Sign In</button>
             )}
           </div>
         </div>
