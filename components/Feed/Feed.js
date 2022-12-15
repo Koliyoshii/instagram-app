@@ -35,11 +35,7 @@ function Feed() {
           {/* Section right */}
           <section className="hidden xl:inline-grid md:col-span-1">
             <div className="fixed top-20">
-              <p className="mt-5 ml-10">You are not logged in. This is dummy data:</p>
-              {/* Mini profile */}
-              <MiniProfile />
-              {/* Suggestions */}
-              <Suggestions />
+              <p className="mt-5 ml-10">You are not logged in.</p>
             </div>
           </section>
         </>
