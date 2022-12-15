@@ -159,7 +159,7 @@ function Post({ id, username, userImg, img, caption }) {
           />
           <button
             type="submit"
-            disabled={!comment.trim()}
+            
             onClick={sendComment}
             className="font-smibold text-blue-400"
           >
