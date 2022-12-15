@@ -46,7 +46,7 @@ function Header() {
             {/* Mobile Dropdown Menu */}
             <MobileMenu />
             <HomeIcon onClick={() => router.push('/')} className="header-icons" />
-            {/* <Bars3BottomRightIcon className=" h-5 w-5 cursor-pointer md:hidden inline-flex hover:scale-125 transition-all duration-150 ease-out" /> */}
+            {/* <Bars3BottomRightIcon className=" h-5 w-5 cursor-pointer md:hidden inline-flex hover:scale-125 transition-all duration-150 ease-out" />  */}
 
             {session ? (
               <>
@@ -64,7 +64,7 @@ function Header() {
                   onClick={signOut({callbackUrl: 'auth/signin'})}
                   src={session?.user?.image}
                   alt="profile-picture"
-                  className="h-10 rounded-full w-10 cursor-pointer"
+                  className="h-10 rounded-full w-10 cursor-pointer inline-flex"
                 />
               </>
             ) : (
