@@ -21,7 +21,7 @@ function Header() {
   return (
     <header className="border-b-0 border-gray-300 shadow-sm bg-white sticky top-0 z-50">
       <div className="max-w-6xl m-auto">
-        <div className="flex justify-between items-center mx-5">
+        <div className="flex justify-between items-center mx-5 space-x-4">
           <div onClick={() => router.push('/')} className="relative hidden lg:inline-grid w-24 cursor-pointer">
             <img src="https://links.papareact.com/ocw" alt="Instagram Logo" />
           </div>
@@ -64,7 +64,7 @@ function Header() {
                   onClick={signOut({callbackUrl: 'auth/signin'})}
                   src={session?.user?.image}
                   alt="profile-picture"
-                  className="h-10 rounded-full w-10 cursor-pointer inline-flex"
+                  className="h-8 rounded-full w-8 md:h-10 md:w-10 cursor-pointer inline-flex"
                 />
               </>
             ) : (
