@@ -1,6 +1,6 @@
 import { Menu, Transition } from "@headlessui/react";
 import {
-    ArrowRightOnRectangleIcon,
+  ArrowRightOnRectangleIcon,
   HeartIcon,
   PaperAirplaneIcon,
   PlusCircleIcon,
@@ -36,15 +36,27 @@ function MobileMenu() {
 
       <Menu.Items
         as="div"
-        className={`absolute ${!session ? "right-14" : "right-4"} w-auto h-auto origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
+        className={`absolute ${
+          !session ? "right-14" : "right-4"
+        } w-auto h-auto origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
       >
         <div className="items-center md:hidden inline-flex justify-end space-x-2 pl-2 pr-2">
           {session ? (
             <>
-              <Menu.Item onClick={() => {setShowModal(true); setIsOpen(!isOpen)}} as="div">
-                <PlusCircleIcon   className="header-mobile-icons" />
+              <Menu.Item
+                onClick={() => {
+                  setShowModal(true);
+                  setIsOpen(!isOpen);
+                }}
+                as="div"
+              >
+                <PlusCircleIcon className="header-mobile-icons" />
               </Menu.Item>
-              <Menu.Item onClick={() => setIsOpen(!isOpen)} as="div" className="p-2 hover:bg-gray-100">
+              <Menu.Item
+                onClick={() => setIsOpen(!isOpen)}
+                as="div"
+                className="p-2 hover:bg-gray-100"
+              >
                 <PaperAirplaneIcon className="header-mobile-icons -rotate-45" />
                 <div className="relative -translate-x-2 -translate-y-2 -mr-3 inline-flex md:hidden items-center justify-center animate-pulse top-1 right-1 text-xs w-5 h-5 bg-red-500 rounded-full">
                   3
@@ -56,13 +68,28 @@ function MobileMenu() {
               <Menu.Item onClick={() => setIsOpen(!isOpen)} as="div">
                 <HeartIcon className="header-mobile-icons" />
               </Menu.Item>
-              <Menu.Item onClick={() => {signOut; setIsOpen(!isOpen)}} as="div">
+              <Menu.Item
+                onClick={() => {
+                  signOut({callbackUrl: '/auth/signin'});
+                  setIsOpen(!isOpen);
+                }}
+                as="div"
+              >
                 <ArrowRightOnRectangleIcon className="header-mobile-icons" />
               </Menu.Item>
             </>
           ) : (
             <Menu.Item onClick={() => setIsOpen(!isOpen)} as="div">
-              <p className="text-blue-400 p-2 cursor-pointer active:text-blue-600" onClick={() => signIn}>Login</p>
+              <p
+                className="text-blue-400 p-2 cursor-pointer active:text-blue-600"
+                onClick={() =>
+                  signIn({
+                    callbackUrl: '/',
+                  })
+                }
+              >
+                Login
+              </p>
             </Menu.Item>
           )}
         </div>

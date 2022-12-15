@@ -61,7 +61,7 @@ function Header() {
                 <UserGroupIcon className="header-icons" />
                 <HeartIcon className="header-icons" />
                 <img
-                  onClick={signOut}
+                  onClick={signOut({callbackUrl: 'auth/signin'})}
                   src={session?.user?.image}
                   alt="profile-picture"
                   className="h-10 rounded-full w-10 cursor-pointer"
