@@ -41,27 +41,27 @@ function MobileMenu() {
         <div className="items-center md:hidden inline-flex justify-end space-x-2 pl-2 pr-2">
           {session ? (
             <>
-              <Menu.Item as="div">
-                <PlusCircleIcon onClick={() => setShowModal(true)} className="header-mobile-icons" />
+              <Menu.Item onClick={() => {setShowModal(true); setIsOpen(!isOpen)}} as="div">
+                <PlusCircleIcon   className="header-mobile-icons" />
               </Menu.Item>
-              <Menu.Item as="div" className="p-2 hover:bg-gray-100">
+              <Menu.Item onClick={() => setIsOpen(!isOpen)} as="div" className="p-2 hover:bg-gray-100">
                 <PaperAirplaneIcon className="header-mobile-icons -rotate-45" />
                 <div className="relative -translate-x-2 -translate-y-2 -mr-3 inline-flex md:hidden items-center justify-center animate-pulse top-1 right-1 text-xs w-5 h-5 bg-red-500 rounded-full">
                   3
                 </div>
               </Menu.Item>
-              <Menu.Item as="div">
+              <Menu.Item onClick={() => setIsOpen(!isOpen)} as="div">
                 <UserGroupIcon className="header-mobile-icons" />
               </Menu.Item>
-              <Menu.Item as="div">
+              <Menu.Item onClick={() => setIsOpen(!isOpen)} as="div">
                 <HeartIcon className="header-mobile-icons" />
               </Menu.Item>
-              <Menu.Item as="div">
-                <ArrowRightOnRectangleIcon onClick={() => signOut} className="header-mobile-icons" />
+              <Menu.Item onClick={() => {signOut; setIsOpen(!isOpen)}} as="div">
+                <ArrowRightOnRectangleIcon className="header-mobile-icons" />
               </Menu.Item>
             </>
           ) : (
-            <Menu.Item as="div">
+            <Menu.Item onClick={() => setIsOpen(!isOpen)} as="div">
               <p className="text-blue-400 p-2 cursor-pointer active:text-blue-600" onClick={() => signIn}>Login</p>
             </Menu.Item>
           )}
