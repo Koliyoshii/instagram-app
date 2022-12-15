@@ -7,6 +7,10 @@
     @apply h-5 w-5 cursor-pointer hidden md:inline-flex hover:scale-125 transition-all duration-150 ease-out;
   }
 
+  .header-mobile-icons {
+    @apply h-7 w-7 cursor-pointer inline-flex md:hidden hover:scale-125 transition-all duration-150 ease-out;
+  }
+
   .btn-icon {
     @apply h-7 hover:scale-125 cursor-pointer transition-all duration-150 ease-out
   }

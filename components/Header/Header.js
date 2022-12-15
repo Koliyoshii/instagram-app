@@ -10,7 +10,8 @@ import {
   HeartIcon,
 } from "@heroicons/react/24/outline";
 import { useRecoilState } from "recoil";
-import { modalState } from "../atoms/modalAtom"
+import { modalState } from "../../atoms/modalAtom"
+import MobileMenu from '../Header/MobileMenu'
 
 function Header() {
   const { data: session, status } = useSession();
@@ -42,14 +43,16 @@ function Header() {
           </div>
 
           <div className="flex items-center justify-end space-x-4">
+            {/* Mobile Dropdown Menu */}
+            <MobileMenu />
             <HomeIcon onClick={() => router.push('/')} className="header-icons" />
-            <Bars3BottomRightIcon className=" h-5 w-5 cursor-pointer md:hidden inline-flex hover:scale-125 transition-all duration-150 ease-out" />
+            {/* <Bars3BottomRightIcon className=" h-5 w-5 cursor-pointer md:hidden inline-flex hover:scale-125 transition-all duration-150 ease-out" /> */}
 
-            {session ? (
+            {!session ? (
               <>
                 <div className="relative header-button">
                   <PaperAirplaneIcon className="header-icons -rotate-45" />
-                  <div className="absolute flex items-center justify-center animate-pulse -top-1 -right-2 text-xs w-5 h-5 bg-red-500 rounded-full">
+                  <div className="hidden md:inline-flex absolute items-center justify-center animate-pulse -top-1 -right-2 text-xs w-5 h-5 bg-red-500 rounded-full">
                     3
                   </div>
                 </div>

@@ -72,12 +72,21 @@ function Post({ id, username, userImg, img, caption }) {
     const commentToSend = comment;
     setComment("");
 
-    await addDoc(collection(db, "posts", id, "comments"), {
-      comment: commentToSend,
-      username: session.user.username,
-      userImage: session.user.image,
-      timestamp: serverTimestamp(),
-    });
+    try {
+      console.log("Sending comment...")
+      const username = session ? session.user.username : "Test";
+      const userImage = session ? session.user.image : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png";
+      const res = await addDoc(collection(db, "posts", id, "comments"), {
+        comment: commentToSend,
+        username: username,
+        userImage: userImage,
+        timestamp: serverTimestamp(),
+      });
+
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -101,11 +110,14 @@ function Post({ id, username, userImg, img, caption }) {
         <div className="flex justify-between px-4 pt-4">
           <div className="flex space-x-4 ">
             {hasLiked ? (
-              <HeartIconSolid onClick={likePost} className="btn-icon text-red-500" />
+              <HeartIconSolid
+                onClick={likePost}
+                className="btn-icon text-red-500"
+              />
             ) : (
               <HeartIcon onClick={likePost} className="btn-icon" />
             )}
-            
+
             <ChatBubbleLeftEllipsisIcon className="btn-icon" />
             <PaperAirplaneIcon className="btn-icon" />
           </div>
@@ -116,9 +128,10 @@ function Post({ id, username, userImg, img, caption }) {
       {/* Caption */}
       <p className="p-5 truncate">
         {likes.length > 0 && (
-          <p><span className="font-bold mr-1">{likes.length}</span> likes</p>
+          <p>
+            <span className="font-bold mr-1">{likes.length}</span> likes
+          </p>
         )}
-
 
         <span className="font-bold mr-1">{username}</span>
         {caption}
@@ -139,16 +152,16 @@ function Post({ id, username, userImg, img, caption }) {
                 {comment.data().comment}
               </p>
 
-              <Moment className="pr-5 text-xs" fromNow>
+              {/* <Moment className="pr-5 text-xs" fromNow>
                 {comment.data().timestamp.toDate()}
-              </Moment>
+              </Moment> */}
             </div>;
           })}
         </div>
       )}
 
       {/* Comment Input */}
-      {session && (
+      {!session && (
         <form className="flex items-center p-4 space-x-2">
           <FaceSmileIcon className="h-7" />
           <input

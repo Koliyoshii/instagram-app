@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Header from "../components/Header"
+import Header from "../components/Header/Header"
 import Feed from "../components/Feed/Feed"
 import Modal from "../components/Modal/Modal"
 
